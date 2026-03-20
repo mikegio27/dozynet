@@ -1,0 +1,200 @@
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Tokens ── */
+:root {
+  --bg:            #0d0e1a;
+  --surface:       rgba(22, 33, 62, 0.75);
+  --surface-hover: rgba(30, 32, 64, 0.92);
+  --border:        #2a2b3d;
+  --border-hover:  #565f89;
+  --text:          #c0caf5;
+  --muted:         #565f89;
+  --dim:           #414868;
+  --blue:          #7aa2f7;
+  --purple:        #bb9af7;
+  --cyan:          #2ac3de;
+  --pink:          #ff79c6;
+  --red:           #f7768e;
+  --orange:        #ff9e64;
+  --green:         #9ece6a;
+  --yellow:        #e0af68;
+}
+
+/* ── Base ── */
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Hack', 'Fira Mono', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nebula ── */
+.nebula {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 20%,  rgba(187,154,247,0.20) 0%, transparent 100%),
+    radial-gradient(ellipse 55% 45% at 85% 10%,  rgba(122,162,247,0.16) 0%, transparent 100%),
+    radial-gradient(ellipse 70% 60% at 55% 78%,  rgba(42,195,222,0.12)  0%, transparent 100%),
+    radial-gradient(ellipse 48% 42% at 8%  85%,  rgba(255,121,198,0.09) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 34% at 92% 60%,  rgba(187,154,247,0.10) 0%, transparent 100%),
+    radial-gradient(ellipse 36% 30% at 45% 40%,  rgba(122,162,247,0.07) 0%, transparent 100%),
+    #0d0e1a;
+}
+
+/* ── Page layout ── */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 2rem 3.5rem;
+}
+
+/* ── Header ── */
+.header {
+  margin-bottom: 2.75rem;
+  animation: fadein 0.4s ease both;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+.logo-accent  { color: var(--blue); }
+.logo-bracket { color: var(--purple); opacity: 0.7; }
+.subtitle {
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+}
+.subtitle span { color: var(--muted); }
+
+/* ── Section divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2rem 0 0.85rem;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadein 0.4s ease both;
+}
+.divider::before {
+  content: '//';
+  color: var(--purple);
+  opacity: 0.55;
+  margin-right: 2px;
+}
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: var(--border);
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+  animation: fadein 0.45s ease both;
+}
+
+/* ── Card ── */
+.card {
+  display: block;
+  text-decoration: none;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1rem 0.9rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+.card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+.card-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1.5px;
+}
+.card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 9px;
+}
+.card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+  letter-spacing: 0.02em;
+}
+.card-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.card-url {
+  display: inline-block;
+  margin-top: 9px;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Hack', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 3rem;
+  font-size: 11px;
+  color: var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.05em;
+  animation: fadein 0.5s ease both;
+}
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  display: inline-block;
+}
+
+/* ── Animations ── */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
