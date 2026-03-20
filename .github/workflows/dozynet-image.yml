@@ -2,8 +2,6 @@ name: dozynet
 
 on:
   push:
-    paths:
-      - 'apps/dozynet/html/**'
     branches:
       - main
 
